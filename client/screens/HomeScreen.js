@@ -1,7 +1,12 @@
-import { View, Text, StatusBar, TextInput } from 'react-native'
+import { View, Text, StatusBar, TextInput, ScrollView } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import * as Icon from "react-native-feather";
+import { themeColors } from '../theme';
+import Categories from '../components/categories';
+import { featured } from '../constants';
+import FeaturedRow from '../components/featuredRow';
+
 
 export default function HomeScreen() {
   return (
@@ -21,7 +26,49 @@ export default function HomeScreen() {
           </View>
 
         </View>
+
+        <View style={{ backgroundColor: themeColors.bgColor(1) }} className="p-3 rounded-full bg-gray-300">
+          <Icon.Sliders height={20} width={20} stroke={"white"} strokeWidth={2.5} />
+        </View>
       </View>
+
+      {/* main */}
+
+      <ScrollView showsVerticalScrollIndicator={false}
+        contentContainerStyle={
+          {
+            padding: 10,
+          }}
+      >
+
+        {/* catogaries */}
+
+        <Categories />
+
+        {/* featured */}
+
+        <View className="mt-5">
+
+          {
+            [featured, featured, featured].map((item, index) => {
+
+              return (
+                <FeaturedRow
+                  key={index}
+                  title={item.title}
+                  restaurants={item.restaurants}
+                  description={item.description}
+                />
+              );
+
+            }
+            )
+          }
+
+        </View>
+
+      </ScrollView>
+
     </SafeAreaView>
   )
 }
