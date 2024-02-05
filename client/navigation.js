@@ -24,7 +24,7 @@ export default function Navigation() {
       }
     }>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Resturant" component={ResturantScreen} />
+      <Stack.Screen name="Restaurant" component={ResturantScreen} />
     </Stack.Navigator>
   </NavigationContainer>
   )
