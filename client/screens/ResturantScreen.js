@@ -30,7 +30,7 @@ export default function ResturantScreen() {
   //console.log("restaurant", item);
 
   return (
-    <View>
+    <View className="relative">
     <CartIcon/>
     <StatusBar style="light"/>
       <ScrollView>
