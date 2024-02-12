@@ -33,6 +33,10 @@ export const cartSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addToCart, removeFromCart, emptyCart } = cartSlice.actions;
 
-export const selectRestaurant = (state) => state.restaurant.restaurant;
+export const selectCartItems = state => state.cart.items;
+
+export const selectCartItemsById = (state , id) => state.cart.items.filter(item => item.id == id);
+
+export const selectCartTotal = state => state.cart.reduce((total, item)=> total=total+item.price,0);
 
 export default cartSlice.reducer;
