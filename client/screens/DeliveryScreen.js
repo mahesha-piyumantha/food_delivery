@@ -6,10 +6,19 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { themeColors } from "../theme";
 import * as Icon from "react-native-feather";
+import { useDispatch, useSelector } from "react-redux";
+import { selectRestaurant } from "../slices/restaurantSlice";
+import { emptyCart } from "../slices/cartSlice";
 
 export default function DeliveryScreen() {
-  const restaurant = featured.restaurants[0];
+  const restaurant = useSelector(selectRestaurant);
   const navigation = useNavigation();
+
+  const dispatch = useDispatch();
+  const cancelOrder = () => {
+    navigation.navigate("Home")
+    dispatch(emptyCart());
+  }
   return (
     <View className="flex-1">
       <StatusBar style="dark-content" />
@@ -81,7 +90,7 @@ export default function DeliveryScreen() {
 
             <TouchableOpacity
               className="bg-white p-3 rounded-full"
-              onPress={() => navigation.navigate("Home")}
+              onPress={cancelOrder}
             >
               <Icon.X
                 height={20}

@@ -19,7 +19,7 @@ export const cartSlice = createSlice({
       if (itemIndex >= 0) {
         newCart.splice(itemIndex, 1);
       } else {
-        console.log("Canot remove the item from cart");
+        console.log("Cannot remove the item from cart");
       }
 
       state.items = newCart;
@@ -33,10 +33,10 @@ export const cartSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addToCart, removeFromCart, emptyCart } = cartSlice.actions;
 
-export const selectCartItems = state => state.cart.items;
+export const selectCartItems = (state) => state.cart.items;
 
 export const selectCartItemsById = (state , id) => state.cart.items.filter(item => item.id == id);
 
-export const selectCartTotal = state => state.cart.reduce((total, item)=> total=total+item.price,0);
+export const selectCartTotal = (state) => state.cart.items.reduce((total, item)=> total=total+item.price,0);
 
 export default cartSlice.reducer;
